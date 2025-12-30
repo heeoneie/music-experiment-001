@@ -1,19 +1,30 @@
 """
-쇼츠/릴스/틱톡 음악 다운로드 스크립트
+쇼츠/릴스/틱톡 댄스/EDM 챌린지 음악 다운로드 스크립트
+
+타겟: 바이럴 댄스 챌린지 음악 (2025년 기준)
 
 사용법:
 1. yt-dlp 설치: pip install yt-dlp
-2. 유튜브 쇼츠 URL 리스트를 아래에 추가
-3. python download_music.py 실행
+2. 유튜브에서 아래 키워드로 검색해서 URL 복사:
+   - "Tokyo Drift Remix dance shorts"
+   - "Shake It To The Max MOLIY shorts"
+   - "Big Guy Dance Challenge shorts"
+3. URL을 URLS 리스트에 추가
+4. python download_music.py 실행
 """
 
 import subprocess
 import os
 
 # 다운로드할 유튜브 쇼츠 URL 리스트
+# 🎯 2025년 바이럴 댄스/EDM 챌린지 음악
 URLS = [
-    # 내일 여기에 틱톡/쇼츠 인기 음악 URL 추가
-    # 예: "https://www.youtube.com/shorts/xxxxx",
+    # 예시: 유튜브에서 검색 후 실제 URL로 교체하세요
+    # "https://www.youtube.com/shorts/xxxxx",  # Tokyo Drift Remix
+    # "https://www.youtube.com/shorts/yyyyy",  # Shake It To The Max
+    # "https://www.youtube.com/shorts/zzzzz",  # Big Guy Dance Challenge
+
+    # 👇 여기에 실제 URL 추가
 ]
 
 def download_audio(url, output_dir="music"):
