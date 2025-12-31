@@ -12,11 +12,10 @@ python analyze_edm.py music/your_song.mp3
 import librosa
 import numpy as np
 import sys
-import matplotlib.pyplot as plt
 
 def analyze_edm_music(file_path):
     """EDM/댄스 음악 특화 분석"""
-    print(f"\n🎵 분석 중: {file_path}\n")
+    print(f"\n분석 중: {file_path}\n")
 
     # 음악 로드
     y, sr = librosa.load(file_path, sr=None)
@@ -78,49 +77,49 @@ def analyze_edm_music(file_path):
     # BPM 체크 (120-140이 댄스에 이상적)
     if 120 <= tempo[0] <= 140:
         dance_score += 30
-        print("✅ BPM이 댄스에 적합 (120-140)")
+        print("[OK] BPM이 댄스에 적합 (120-140)")
     else:
-        print(f"⚠️  BPM {tempo[0]:.0f}는 댄스 범위 벗어남")
+        print(f"[주의] BPM {tempo[0]:.0f}는 댄스 범위 벗어남")
 
     # 길이 체크 (15-30초가 쇼츠에 이상적)
     if 15 <= duration <= 30:
         dance_score += 25
-        print("✅ 길이가 쇼츠에 적합 (15-30초)")
+        print("[OK] 길이가 쇼츠에 적합 (15-30초)")
     elif duration < 15:
-        print(f"⚠️  너무 짧음 ({duration:.0f}초)")
+        print(f"[주의] 너무 짧음 ({duration:.0f}초)")
     else:
         dance_score += 15
-        print(f"⚠️  조금 김 ({duration:.0f}초), 편집 필요")
+        print(f"[주의] 조금 김 ({duration:.0f}초), 편집 필요")
 
     # 에너지 체크
     if rms > 0.03:
         dance_score += 20
-        print("✅ 충분한 에너지")
+        print("[OK] 충분한 에너지")
     else:
-        print("⚠️  에너지 낮음")
+        print("[주의] 에너지 낮음")
 
     # 비트 강도
     if beat_strength > 5.0:
         dance_score += 15
-        print("✅ 강한 비트")
+        print("[OK] 강한 비트")
     else:
-        print("⚠️  비트 약함")
+        print("[주의] 비트 약함")
 
     # 템포 안정성
     if tempo_std < 5.0:
         dance_score += 10
-        print("✅ 안정적인 템포")
+        print("[OK] 안정적인 템포")
     else:
-        print("⚠️  템포 불안정")
+        print("[주의] 템포 불안정")
 
-    print(f"\n🎯 댄스 음악 적합도: {dance_score}/100")
+    print(f"\n[결과] 댄스 음악 적합도: {dance_score}/100")
 
     if dance_score >= 80:
-        print("💯 완벽한 댄스 챌린지 음악!")
+        print("=> 완벽한 댄스 챌린지 음악!")
     elif dance_score >= 60:
-        print("👍 좋은 댄스 음악")
+        print("=> 좋은 댄스 음악")
     else:
-        print("🤔 댄스 음악으로는 부족할 수 있음")
+        print("=> 댄스 음악으로는 부족할 수 있음")
 
     print("\n" + "="*50 + "\n")
 
